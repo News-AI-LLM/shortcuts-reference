@@ -1278,15 +1278,15 @@ function toggleDark() {
     localStorage.setItem('theme', 'dark');
   }
 }
-// Restore theme
+// Restore theme - デフォルトはダークモード
 (function() {
   const saved = localStorage.getItem('theme');
-  if (saved === 'dark') {
+  if (saved === 'light') {
+    // ライトのまま
+  } else {
     document.documentElement.setAttribute('data-theme', 'dark');
     document.getElementById('darkBtn').textContent = '☀️ ライト';
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches && !saved) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.getElementById('darkBtn').textContent = '☀️ ライト';
+    if (!saved) localStorage.setItem('theme', 'dark');
   }
 })();
 </script>
