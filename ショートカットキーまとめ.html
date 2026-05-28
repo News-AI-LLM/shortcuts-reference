@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ショートカットキーまとめ | Excel・Outlook・Teams・Windows</title>
+<title>ショートカットキーまとめ | Excel・Word・Outlook・PowerPoint・Teams・ブラウザ・Windows</title>
 <style>
   :root {
     --excel: #217346;
     --excel-light: #e8f5e9;
+    --word: #2b579a;
+    --word-light: #e8eff7;
     --outlook: #0072c6;
     --outlook-light: #e3f2fd;
+    --powerpoint: #c43e1c;
+    --powerpoint-light: #fde9e5;
     --teams: #6264A7;
     --teams-light: #f0effb;
+    --browser: #4285f4;
+    --browser-light: #e8f0fe;
     --windows: #0078d7;
     --windows-light: #e1f5fe;
     --bg: #f8f9fa;
@@ -30,62 +36,55 @@
   .hero {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     color: #fff;
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1.5rem;
     text-align: center;
   }
   .hero h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: 0.05em;
     margin-bottom: 0.3rem;
   }
-  .hero p {
-    color: #a0b4c8;
-    font-size: 1rem;
-  }
-  .hero .count {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: #6a8fbd;
-  }
-  .container {
-    max-width: 1150px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
+  .hero p { color: #a0b4c8; font-size: 1rem; }
+  .hero .count { margin-top: 0.4rem; font-size: 0.82rem; color: #6a8fbd; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; }
+  /* Tab bar - scrollable */
   .app-tabs {
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
   .app-tab {
     flex: 1;
-    min-width: 120px;
-    padding: 0.8rem 1rem;
+    min-width: 100px;
+    padding: 0.65rem 0.8rem;
     border: 2px solid var(--border);
     border-radius: 10px;
     background: var(--card);
     cursor: pointer;
     text-align: center;
     font-weight: 700;
-    font-size: 0.92rem;
+    font-size: 0.85rem;
     transition: all 0.2s;
     user-select: none;
   }
   .app-tab:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
   .app-tab.active { color: #fff; border-color: transparent; }
   .app-tab.active-excel { background: var(--excel); }
+  .app-tab.active-word { background: var(--word); }
   .app-tab.active-outlook { background: var(--outlook); }
+  .app-tab.active-powerpoint { background: var(--powerpoint); }
   .app-tab.active-teams { background: var(--teams); }
+  .app-tab.active-browser { background: var(--browser); }
   .app-tab.active-windows { background: var(--windows); }
-  .app-tab .icon { display: block; font-size: 1.5rem; margin-bottom: 0.2rem; }
+  .app-tab .icon { display: block; font-size: 1.3rem; margin-bottom: 0.15rem; }
   .section { display: none; }
   .section.active { display: block; }
   .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    gap: 1.2rem;
+    gap: 1rem;
   }
   .category-card {
     background: var(--card);
@@ -97,82 +96,70 @@
   }
   .category-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
   .category-header {
-    padding: 0.75rem 1rem;
+    padding: 0.65rem 1rem;
     font-weight: 700;
-    font-size: 0.93rem;
+    font-size: 0.9rem;
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
   .category-header .badge {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.5rem;
+    font-size: 0.62rem;
+    padding: 0.12rem 0.45rem;
     border-radius: 999px;
     color: #fff;
     margin-left: auto;
     opacity: 0.85;
   }
   .badge-excel { background: var(--excel); }
+  .badge-word { background: var(--word); }
   .badge-outlook { background: var(--outlook); }
+  .badge-powerpoint { background: var(--powerpoint); }
   .badge-teams { background: var(--teams); }
+  .badge-browser { background: var(--browser); }
   .badge-windows { background: var(--windows); }
-  .shortcut-list { padding: 0.4rem 0; }
+  .shortcut-list { padding: 0.35rem 0; }
   .shortcut-row {
     display: flex;
     align-items: baseline;
-    padding: 0.42rem 1rem;
-    gap: 0.8rem;
+    padding: 0.38rem 1rem;
+    gap: 0.7rem;
     transition: background 0.1s;
   }
   .shortcut-row:hover { background: #f5f5f5; }
   .shortcut-keys {
     flex-shrink: 0;
     font-family: "SF Mono", "Consolas", "Meiryo", monospace;
-    font-size: 0.77rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    min-width: 130px;
-    padding: 0.18rem 0.5rem;
+    min-width: 125px;
+    padding: 0.15rem 0.45rem;
     border-radius: 6px;
     text-align: center;
   }
   .keys-excel { background: var(--excel-light); color: #1b5e20; }
+  .keys-word { background: var(--word-light); color: #1a3a6a; }
   .keys-outlook { background: var(--outlook-light); color: #0d47a1; }
+  .keys-powerpoint { background: var(--powerpoint-light); color: #8a2e14; }
   .keys-teams { background: var(--teams-light); color: #4a4a8a; }
+  .keys-browser { background: var(--browser-light); color: #1a4fa0; }
   .keys-windows { background: var(--windows-light); color: #01579b; }
-  .shortcut-desc {
-    font-size: 0.87rem;
-    color: var(--text);
-  }
-  .shortcut-note {
-    font-size: 0.72rem;
-    color: var(--muted);
-    margin-left: auto;
-    white-space: nowrap;
-  }
-  .shortcut-row.divider {
-    border-top: 1px dashed #eee;
-    margin-top: 0.3rem;
-    padding-top: 0.6rem;
-  }
-  footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--muted);
-    font-size: 0.8rem;
-  }
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 1.5rem; }
+  .shortcut-desc { font-size: 0.85rem; color: var(--text); }
+  .shortcut-note { font-size: 0.7rem; color: var(--muted); margin-left: auto; white-space: nowrap; }
+  footer { text-align: center; padding: 1.5rem; color: var(--muted); font-size: 0.78rem; }
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.4rem; }
     .category-grid { grid-template-columns: 1fr; }
-    .shortcut-keys { min-width: 105px; font-size: 0.72rem; }
-    .app-tab { min-width: 80px; font-size: 0.75rem; padding: 0.6rem 0.5rem; }
+    .shortcut-keys { min-width: 100px; font-size: 0.7rem; }
+    .app-tab { min-width: 70px; font-size: 0.68rem; padding: 0.5rem 0.3rem; }
   }
   @media print {
     .app-tabs { display: none; }
     .section { display: block !important; }
     .category-card { break-inside: avoid; }
     .hero { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .keys-excel, .keys-outlook, .keys-teams, .keys-windows { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .keys-excel,.keys-word,.keys-outlook,.keys-powerpoint,.keys-teams,.keys-browser,.keys-windows { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 </style>
 </head>
@@ -180,32 +167,25 @@
 
 <div class="hero">
   <h1>⌨ ショートカットキーまとめ</h1>
-  <p>Excel / Outlook / Teams / Windows — 厳選ショートカット一覧</p>
-  <div class="count">全 4 アプリ ・ 40+ カテゴリ ・ 250+ ショートカット</div>
+  <p>7アプリ厳選ショートカット — 業務効率化の決定版</p>
+  <div class="count">全 7 アプリ ・ 60+ カテゴリ ・ 400+ ショートカット</div>
 </div>
 
 <div class="container">
 
 <div class="app-tabs" id="tabs">
-  <div class="app-tab active active-excel" data-target="excel" onclick="switchTab('excel')">
-    <span class="icon">📊</span> Excel
-  </div>
-  <div class="app-tab" data-target="outlook" onclick="switchTab('outlook')">
-    <span class="icon">📧</span> Outlook
-  </div>
-  <div class="app-tab" data-target="teams" onclick="switchTab('teams')">
-    <span class="icon">💬</span> Teams
-  </div>
-  <div class="app-tab" data-target="windows" onclick="switchTab('windows')">
-    <span class="icon">🖥</span> Windows
-  </div>
+  <div class="app-tab active active-excel" data-target="excel" onclick="switchTab('excel')"><span class="icon">📊</span> Excel</div>
+  <div class="app-tab" data-target="word" onclick="switchTab('word')"><span class="icon">📝</span> Word</div>
+  <div class="app-tab" data-target="outlook" onclick="switchTab('outlook')"><span class="icon">📧</span> Outlook</div>
+  <div class="app-tab" data-target="powerpoint" onclick="switchTab('powerpoint')"><span class="icon">📽</span> PowerPoint</div>
+  <div class="app-tab" data-target="teams" onclick="switchTab('teams')"><span class="icon">💬</span> Teams</div>
+  <div class="app-tab" data-target="browser" onclick="switchTab('browser')"><span class="icon">🌐</span> ブラウザ</div>
+  <div class="app-tab" data-target="windows" onclick="switchTab('windows')"><span class="icon">🖥</span> Windows</div>
 </div>
 
 <!-- ==================== EXCEL ==================== -->
-<div class="section active" id="section-excel">
-<div class="category-grid">
+<div class="section active" id="section-excel"><div class="category-grid">
 
-  <!-- 基本操作 -->
   <div class="category-card">
     <div class="category-header">📋 基本操作 <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
@@ -216,15 +196,13 @@
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Y</span><span class="shortcut-desc">やり直し</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + S</span><span class="shortcut-desc">上書き保存</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">F12</span><span class="shortcut-desc">名前を付けて保存</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + W</span><span class="shortcut-desc">ブックを閉じる</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + N</span><span class="shortcut-desc">新しいブックを作成</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + N</span><span class="shortcut-desc">新しいブック</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + O</span><span class="shortcut-desc">ブックを開く</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + P</span><span class="shortcut-desc">印刷</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + F4</span><span class="shortcut-desc">ブックを閉じる（終了）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + W / F4</span><span class="shortcut-desc">閉じる</span></div>
     </div>
   </div>
 
-  <!-- セル操作 -->
   <div class="category-card">
     <div class="category-header">✏️ セル操作 <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
@@ -234,15 +212,13 @@
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Tab</span><span class="shortcut-desc">右のセルに移動</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + Enter</span><span class="shortcut-desc">上のセルに移動</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + Tab</span><span class="shortcut-desc">左のセルに移動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + D</span><span class="shortcut-desc">上からコピー（下方向へ）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + R</span><span class="shortcut-desc">左からコピー（右方向へ）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + D</span><span class="shortcut-desc">上からコピー（下方向）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + R</span><span class="shortcut-desc">左からコピー（右方向）</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Enter</span><span class="shortcut-desc">選択セルに一括入力</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Delete</span><span class="shortcut-desc">カーソル右を削除</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + ↓</span><span class="shortcut-desc">ドロップダウンリスト表示</span></div>
     </div>
   </div>
 
-  <!-- 選択・移動 -->
   <div class="category-card">
     <div class="category-header">🎯 選択・移動 <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
@@ -250,220 +226,304 @@
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + ←↑→↓</span><span class="shortcut-desc">データ範囲を選択</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Space</span><span class="shortcut-desc">列全体を選択</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + Space</span><span class="shortcut-desc">行全体を選択</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + A</span><span class="shortcut-desc">全選択（現在の範囲→全体）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + G / F5</span><span class="shortcut-desc">ジャンプ（セル番地指定）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + [</span><span class="shortcut-desc">参照元セルにジャンプ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + ]</span><span class="shortcut-desc">参照先セルにジャンプ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + .</span><span class="shortcut-desc">選択範囲の角を移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + A</span><span class="shortcut-desc">全選択</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + G / F5</span><span class="shortcut-desc">ジャンプ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + [ / ]</span><span class="shortcut-desc">参照元/先にジャンプ</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + ;</span><span class="shortcut-desc">可視セルのみ選択</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + /</span><span class="shortcut-desc">配列のセル範囲を選択</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + \</span><span class="shortcut-desc">行内の差異を選択</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + |</span><span class="shortcut-desc">列内の差異を選択</span></div>
     </div>
   </div>
 
-  <!-- 書式設定 -->
   <div class="category-card">
     <div class="category-header">🎨 書式設定 <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + 1</span><span class="shortcut-desc">セルの書式設定ダイアログ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + B</span><span class="shortcut-desc">太字</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + I</span><span class="shortcut-desc">斜体</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + U</span><span class="shortcut-desc">下線</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + 1</span><span class="shortcut-desc">セルの書式設定</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + B / I / U</span><span class="shortcut-desc">太字 / 斜体 / 下線</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + 5</span><span class="shortcut-desc">取り消し線</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + $</span><span class="shortcut-desc">通貨書式</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + %</span><span class="shortcut-desc">パーセント書式</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + #</span><span class="shortcut-desc">日付書式（yyyy/m/d）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + #</span><span class="shortcut-desc">日付書式</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + @</span><span class="shortcut-desc">時刻書式</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + !</span><span class="shortcut-desc">桁区切り書式</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + ~</span><span class="shortcut-desc">標準書式（初期化）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + &</span><span class="shortcut-desc">外枠線を追加</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + _</span><span class="shortcut-desc">外枠線を削除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + & / _</span><span class="shortcut-desc">外枠線 追加 / 削除</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + Enter</span><span class="shortcut-desc">セル内改行</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + ;</span><span class="shortcut-desc">今日の日付を入力</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + ;</span><span class="shortcut-desc">現在時刻を入力</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + ; / Ctrl + Shift + ;</span><span class="shortcut-desc">日付 / 時刻 入力</span></div>
     </div>
   </div>
 
-  <!-- 行・列操作 -->
   <div class="category-card">
     <div class="category-header">📏 行・列操作 <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + +</span><span class="shortcut-desc">セル/行/列を挿入</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + -</span><span class="shortcut-desc">セル/行/列を削除</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + O + I</span><span class="shortcut-desc">列幅を自動調整</span><span class="shortcut-note">Alt → H → O → I</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + O + A</span><span class="shortcut-desc">行の高さを自動調整</span><span class="shortcut-note">Alt → H → O → A</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + W</span><span class="shortcut-desc">折り返して全体を表示</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + M + U</span><span class="shortcut-desc">セル結合（中央）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + H</span><span class="shortcut-desc">塗りつぶしの色</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + F + C</span><span class="shortcut-desc">フォントの色</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + A + C</span><span class="shortcut-desc">中央揃え</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → H → O → I</span><span class="shortcut-desc">列幅を自動調整</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → H → O → A</span><span class="shortcut-desc">行の高さを自動調整</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → H → W</span><span class="shortcut-desc">折り返して全体表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → H → M → U</span><span class="shortcut-desc">セル結合（中央）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → H → A → C</span><span class="shortcut-desc">中央揃え</span></div>
     </div>
   </div>
 
-  <!-- 数式・関数 -->
   <div class="category-card">
     <div class="category-header">🔢 数式・関数 <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">=</span><span class="shortcut-desc">数式の入力を開始</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + =</span><span class="shortcut-desc">SUM（オートSUM）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">F4</span><span class="shortcut-desc">絶対参照に切替（$A$1）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + `</span><span class="shortcut-desc">数式表示/非表示切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">F9</span><span class="shortcut-desc">選択範囲を再計算</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + F9</span><span class="shortcut-desc">アクティブシートのみ計算</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + F3</span><span class="shortcut-desc">関数の挿入ダイアログ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + A</span><span class="shortcut-desc">関数の引数を挿入</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + U</span><span class="shortcut-desc">数式バーの展開/折りたたみ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + Enter</span><span class="shortcut-desc">配列数式（CSE）</span><span class="shortcut-note">旧形式</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">F2 → Ctrl + Shift + Enter</span><span class="shortcut-desc">配列数式で確定</span><span class="shortcut-note">新方式</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">F4</span><span class="shortcut-desc">絶対参照に切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + `</span><span class="shortcut-desc">数式表示/非表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">F9 / Shift + F9</span><span class="shortcut-desc">計算 / シートのみ計算</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + F3</span><span class="shortcut-desc">関数の挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + U</span><span class="shortcut-desc">数式バーの展開</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + F3</span><span class="shortcut-desc">名前の定義</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + F3</span><span class="shortcut-desc">選択範囲から名前作成</span></div>
     </div>
   </div>
 
-  <!-- フィルター・並べ替え -->
   <div class="category-card">
-    <div class="category-header">🔍 フィルター・並べ替え <span class="badge badge-excel">Excel</span></div>
+    <div class="category-header">🔍 フィルター・テーブル <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + L</span><span class="shortcut-desc">フィルターのオン/オフ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + L</span><span class="shortcut-desc">フィルター ON/OFF</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + ↓</span><span class="shortcut-desc">フィルターリストを開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + ↓ + S</span><span class="shortcut-desc">昇順で並べ替え</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + ↓ + O</span><span class="shortcut-desc">降順で並べ替え</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + A + T</span><span class="shortcut-desc">フィルター解除</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + A + C</span><span class="shortcut-desc">クリア</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + A + S + S</span><span class="shortcut-desc">並べ替えダイアログ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → A → T</span><span class="shortcut-desc">フィルターをクリア</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + T</span><span class="shortcut-desc">テーブル作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + O</span><span class="shortcut-desc">コメント/メモを選択</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + O</span><span class="shortcut-desc">コメント/メモ選択</span></div>
     </div>
   </div>
 
-  <!-- 貼り付けオプション -->
   <div class="category-card">
     <div class="category-header">📎 形式を選択して貼り付け <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Alt + V</span><span class="shortcut-desc">形式を選択して貼り付け</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ V</span><span class="shortcut-desc">値のみ貼り付け</span><span class="shortcut-note">Ctrl+Alt+V → V</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ T</span><span class="shortcut-desc">書式のみ貼り付け</span><span class="shortcut-note">Ctrl+Alt+V → T</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ F</span><span class="shortcut-desc">数式のみ貼り付け</span><span class="shortcut-note">Ctrl+Alt+V → F</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ W</span><span class="shortcut-desc">列幅のみ貼り付け</span><span class="shortcut-note">Ctrl+Alt+V → W</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ V</span><span class="shortcut-desc">値</span><span class="shortcut-note">Ctrl+Alt+V → V</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ T</span><span class="shortcut-desc">書式</span><span class="shortcut-note">Ctrl+Alt+V → T</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ F</span><span class="shortcut-desc">数式</span><span class="shortcut-note">Ctrl+Alt+V → F</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ W</span><span class="shortcut-desc">列幅</span><span class="shortcut-note">Ctrl+Alt+V → W</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">→ E</span><span class="shortcut-desc">行列を入れ替え</span><span class="shortcut-note">Ctrl+Alt+V → E</span></div>
     </div>
   </div>
 
-  <!-- ピボットテーブル・グラフ -->
   <div class="category-card">
-    <div class="category-header">📈 ピボット・グラフ <span class="badge badge-excel">Excel</span></div>
+    <div class="category-header">📈 グラフ・ピボット <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + N + V</span><span class="shortcut-desc">ピボットテーブル作成</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + F1</span><span class="shortcut-desc">標準グラフを即作成</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">F11</span><span class="shortcut-desc">グラフシートを作成</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + F5</span><span class="shortcut-desc">ピボットテーブル更新</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + *</span><span class="shortcut-desc">ピボットテーブル全体を選択</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → N → V</span><span class="shortcut-desc">ピボットテーブル作成</span></div>
     </div>
   </div>
 
-  <!-- シート操作 -->
   <div class="category-card">
-    <div class="category-header">📑 シート・ブック操作 <span class="badge badge-excel">Excel</span></div>
+    <div class="category-header">📑 シート・ブック <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + PgDn</span><span class="shortcut-desc">次のシートへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + PgUp</span><span class="shortcut-desc">前のシートへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + F11</span><span class="shortcut-desc">新しいシートを挿入</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + O + R</span><span class="shortcut-desc">シート名の変更</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Tab</span><span class="shortcut-desc">開いているブックを切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + F6</span><span class="shortcut-desc">次のブックウィンドウへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + H + O + R</span><span class="shortcut-desc">シート名の変更</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + E + L</span><span class="shortcut-desc">シートの削除</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + E + M</span><span class="shortcut-desc">シートの移動/コピー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + PgDn / PgUp</span><span class="shortcut-desc">次/前のシートへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + F11</span><span class="shortcut-desc">新しいシート追加</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Tab / F6</span><span class="shortcut-desc">ブックを切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → H → O → R</span><span class="shortcut-desc">シート名の変更</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt → E → L</span><span class="shortcut-desc">シートの削除</span></div>
     </div>
   </div>
 
-  <!-- 検索・置換 -->
-  <div class="category-card">
-    <div class="category-header">🔎 検索・置換 <span class="badge badge-excel">Excel</span></div>
-    <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + F</span><span class="shortcut-desc">検索</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + H</span><span class="shortcut-desc">置換</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + Shift + F</span><span class="shortcut-desc">詳細検索</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + *</span><span class="shortcut-desc">現在の範囲を全選択</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + K</span><span class="shortcut-desc">ハイパーリンク挿入</span></div>
-    </div>
-  </div>
-
-  <!-- マクロ・VBA -->
   <div class="category-card">
     <div class="category-header">⚡ マクロ・VBA <span class="badge badge-excel">Excel</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + F8</span><span class="shortcut-desc">マクロダイアログ</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">Alt + F11</span><span class="shortcut-desc">VBAエディタを開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Ctrl + K</span><span class="shortcut-desc">ハイパーリンク挿入</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-excel">F7</span><span class="shortcut-desc">スペルチェック</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-excel">Shift + F2</span><span class="shortcut-desc">コメントの編集/挿入</span></div>
     </div>
   </div>
 
-</div>
-</div>
+</div></div>
+
+<!-- ==================== WORD ==================== -->
+<div class="section" id="section-word"><div class="category-grid">
+
+  <div class="category-card">
+    <div class="category-header">📋 基本操作 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + N</span><span class="shortcut-desc">新しい文書</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + O</span><span class="shortcut-desc">文書を開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + S</span><span class="shortcut-desc">上書き保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">F12</span><span class="shortcut-desc">名前を付けて保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + P</span><span class="shortcut-desc">印刷</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + W</span><span class="shortcut-desc">文書を閉じる</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Z / Y</span><span class="shortcut-desc">元に戻す / やり直し</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + F2</span><span class="shortcut-desc">印刷プレビュー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">F1</span><span class="shortcut-desc">ヘルプ</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">✂️ 編集操作 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + C / X / V</span><span class="shortcut-desc">コピー / 切り取り / 貼り付け</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Alt + V</span><span class="shortcut-desc">形式を選択して貼り付け</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + D</span><span class="shortcut-desc">フォントダイアログ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Space</span><span class="shortcut-desc">書式をクリア</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + C</span><span class="shortcut-desc">書式のコピー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + V</span><span class="shortcut-desc">書式の貼り付け</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">F4</span><span class="shortcut-desc">直前の操作を繰り返す</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Z</span><span class="shortcut-desc">元に戻す</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🎨 文字書式 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + B</span><span class="shortcut-desc">太字</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + I</span><span class="shortcut-desc">斜体</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + U</span><span class="shortcut-desc">下線</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + W</span><span class="shortcut-desc">単語のみ下線</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + D</span><span class="shortcut-desc">二重下線</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + =</span><span class="shortcut-desc">上付き文字</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + =</span><span class="shortcut-desc">下付き文字</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + K</span><span class="shortcut-desc">小文字（スモールキャップ）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + A</span><span class="shortcut-desc">すべて大文字に変換</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Shift + F3</span><span class="shortcut-desc">大文字/小文字を切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + ] / [</span><span class="shortcut-desc">フォントサイズ拡大/縮小</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">📐 段落書式 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + E</span><span class="shortcut-desc">中央揃え</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + L</span><span class="shortcut-desc">左揃え</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + R</span><span class="shortcut-desc">右揃え</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + J</span><span class="shortcut-desc">両端揃え</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + 1/2/5</span><span class="shortcut-desc">行間 1行/2行/1.5行</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + 0</span><span class="shortcut-desc">段落前の間隔追加/削除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + M</span><span class="shortcut-desc">インデント（字下げ）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + M</span><span class="shortcut-desc">インデント解除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + T</span><span class="shortcut-desc">ぶら下げインデント</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + T</span><span class="shortcut-desc">ぶら下げインデント解除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Q</span><span class="shortcut-desc">段落書式をクリア</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🎯 選択・移動 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + A</span><span class="shortcut-desc">すべて選択</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + ←/→</span><span class="shortcut-desc">1単語ずつ移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + ↑/↓</span><span class="shortcut-desc">1段落ずつ移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Home / End</span><span class="shortcut-desc">行頭/行末に移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Home / End</span><span class="shortcut-desc">文書先頭/末尾に移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + ←/→</span><span class="shortcut-desc">1単語ずつ選択</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + Home/End</span><span class="shortcut-desc">文書先頭/末尾まで選択</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">F8 → ←/→</span><span class="shortcut-desc">選択範囲の拡張モード</span><span class="shortcut-note">Escで解除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + G / F5</span><span class="shortcut-desc">ページ番号指定で移動</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🔍 検索・置換 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + F</span><span class="shortcut-desc">検索（ナビゲーション）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + H</span><span class="shortcut-desc">置換</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + G</span><span class="shortcut-desc">ページ/見出し/行に移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Ctrl + Y</span><span class="shortcut-desc">検索結果の次へ</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">📑 挿入・アウトライン <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Enter</span><span class="shortcut-desc">改ページ挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + Enter</span><span class="shortcut-desc">段区切り</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + 8</span><span class="shortcut-desc">編集記号の表示/非表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Shift + ↑/↓</span><span class="shortcut-desc">段落を移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Shift + →/←</span><span class="shortcut-desc">アウトラインレベル変更</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + N</span><span class="shortcut-desc">標準スタイル（本文）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Ctrl + 1/2/3</span><span class="shortcut-desc">見出し1/2/3</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">📋 表操作 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Tab</span><span class="shortcut-desc">次のセルへ移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Shift + Tab</span><span class="shortcut-desc">前のセルへ移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Home/End</span><span class="shortcut-desc">行の先頭/末尾のセルへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + PgUp/PgDn</span><span class="shortcut-desc">列の先頭/末尾のセルへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + Enter</span><span class="shortcut-desc">表を分割</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Backspace（先頭セル）</span><span class="shortcut-desc">行を削除</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🔄 レビュー・校閲 <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">F7</span><span class="shortcut-desc">スペルチェック</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + E</span><span class="shortcut-desc">変更履歴 ON/OFF</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Alt + M</span><span class="shortcut-desc">コメントの挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + R → N → N</span><span class="shortcut-desc">新しいコメント</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + G</span><span class="shortcut-desc">文字カウント</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Alt + R</span><span class="shortcut-desc">脚注の挿入</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">👁 表示モード <span class="badge badge-word">Word</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Ctrl + P</span><span class="shortcut-desc">印刷レイアウト表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Ctrl + O</span><span class="shortcut-desc">アウトライン表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Alt + Ctrl + N</span><span class="shortcut-desc">下書きモード</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Alt + I</span><span class="shortcut-desc">印刷プレビュー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + Shift + L</span><span class="shortcut-desc">箇条書き（黒丸）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-word">Ctrl + K</span><span class="shortcut-desc">ハイパーリンク挿入</span></div>
+    </div>
+  </div>
+
+</div></div>
 
 <!-- ==================== OUTLOOK ==================== -->
-<div class="section" id="section-outlook">
-<div class="category-grid">
+<div class="section" id="section-outlook"><div class="category-grid">
 
-  <!-- 基本操作 -->
   <div class="category-card">
     <div class="category-header">📋 基本操作 <span class="badge badge-outlook">Outlook</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + N</span><span class="shortcut-desc">新しいアイテム（現在のビュー）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + M</span><span class="shortcut-desc">新しいメール作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + A</span><span class="shortcut-desc">新しい予定を作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + C</span><span class="shortcut-desc">新しい連絡先を作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + K</span><span class="shortcut-desc">新しいタスクを作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + H</span><span class="shortcut-desc">新しい SharePoint ドキュメント</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + E</span><span class="shortcut-desc">新しいフォルダー作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + O</span><span class="shortcut-desc">開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + P</span><span class="shortcut-desc">印刷</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 2</span><span class="shortcut-desc">予定表に切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + N</span><span class="shortcut-desc">新しいアイテム作成</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + M</span><span class="shortcut-desc">新しいメール</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + A</span><span class="shortcut-desc">新しい予定</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + C</span><span class="shortcut-desc">新しい連絡先</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + K</span><span class="shortcut-desc">新しいタスク</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + H</span><span class="shortcut-desc">新しいSharePoint文書</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + E</span><span class="shortcut-desc">新しいフォルダー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + O / P</span><span class="shortcut-desc">開く / 印刷</span></div>
     </div>
   </div>
 
-  <!-- メール操作 -->
   <div class="category-card">
     <div class="category-header">✉️ メール操作 <span class="badge badge-outlook">Outlook</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + R</span><span class="shortcut-desc">返信</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + R</span><span class="shortcut-desc">全員に返信</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + F</span><span class="shortcut-desc">転送</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + M / F9</span><span class="shortcut-desc">送受信（すべてのフォルダー）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + M / F9</span><span class="shortcut-desc">送受信</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + D</span><span class="shortcut-desc">削除</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Q</span><span class="shortcut-desc">既読にする</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + U</span><span class="shortcut-desc">未読にする</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Insert</span><span class="shortcut-desc">フラグの切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + I</span><span class="shortcut-desc">受信トレイに移動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + O</span><span class="shortcut-desc">送信トレイに移動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 1</span><span class="shortcut-desc">メールビューへ切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + B</span><span class="shortcut-desc">迷惑メールではないと報告</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + I / O</span><span class="shortcut-desc">受信/送信トレイへ</span></div>
     </div>
   </div>
 
-  <!-- メール作成 -->
   <div class="category-card">
-    <div class="category-header">✍️ メール作成（エディター内） <span class="badge badge-outlook">Outlook</span></div>
+    <div class="category-header">✍️ メール作成 <span class="badge badge-outlook">Outlook</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + S</span><span class="shortcut-desc">送信</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Enter</span><span class="shortcut-desc">送信</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + K</span><span class="shortcut-desc">名前のチェック（あて名解決）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + S / Ctrl + Enter</span><span class="shortcut-desc">送信</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + K</span><span class="shortcut-desc">あて名解決</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + C</span><span class="shortcut-desc">Cc欄を表示</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + B</span><span class="shortcut-desc">Bcc欄を表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + G</span><span class="shortcut-desc">メッセージフラグ</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + O</span><span class="shortcut-desc">オプション（重要度等）</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">F7</span><span class="shortcut-desc">スペルチェック</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Tab</span><span class="shortcut-desc">To → Cc → Bcc → 本文へ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + G</span><span class="shortcut-desc">メッセージフラグ設定</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + D</span><span class="shortcut-desc">スレッド無視</span></div>
     </div>
   </div>
 
-  <!-- フォルダー移動 -->
   <div class="category-card">
-    <div class="category-header">📂 ビュー切替・フォルダー移動 <span class="badge badge-outlook">Outlook</span></div>
+    <div class="category-header">📂 ビュー切替 <span class="badge badge-outlook">Outlook</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 1</span><span class="shortcut-desc">メール</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 2</span><span class="shortcut-desc">予定表</span></div>
@@ -471,78 +531,149 @@
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 4</span><span class="shortcut-desc">タスク</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 5</span><span class="shortcut-desc">メモ</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 6</span><span class="shortcut-desc">フォルダーリスト</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Y</span><span class="shortcut-desc">フォルダーへ移動（名前指定）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + Y</span><span class="shortcut-desc">別のフォルダーにコピー</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + V</span><span class="shortcut-desc">別のフォルダーに移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Y</span><span class="shortcut-desc">フォルダーへ移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + Y / V</span><span class="shortcut-desc">コピー / 移動</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Backspace</span><span class="shortcut-desc">1つ上のフォルダーへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 7</span><span class="shortcut-desc">ショートカット</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 8</span><span class="shortcut-desc">フォルダー一覧（詳細）</span></div>
     </div>
   </div>
 
-  <!-- メッセージナビ -->
-  <div class="category-card">
-    <div class="category-header">📨 メッセージナビゲーション <span class="badge badge-outlook">Outlook</span></div>
-    <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">↑ / ↓</span><span class="shortcut-desc">前/次のメッセージへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Space</span><span class="shortcut-desc">次のページ（プレビュー）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Shift + Space</span><span class="shortcut-desc">前のページ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + T</span><span class="shortcut-desc">削除したメールを復元</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + S</span><span class="shortcut-desc">既読/未読を反転</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + J</span><span class="shortcut-desc">迷惑メールとして報告</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Alt + J</span><span class="shortcut-desc">迷惑メールではないと報告</span></div>
-    </div>
-  </div>
-
-  <!-- 予定表 -->
   <div class="category-card">
     <div class="category-header">📅 予定表 <span class="badge badge-outlook">Outlook</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + G</span><span class="shortcut-desc">日付ジャンプ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + ← / →</span><span class="shortcut-desc">前日/翌日へ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + ↑ / ↓</span><span class="shortcut-desc">前週/翌週へ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + 4</span><span class="shortcut-desc">日表示</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + 3</span><span class="shortcut-desc">週表示</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + 2</span><span class="shortcut-desc">月表示</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + &gt;</span><span class="shortcut-desc">次の予定表へ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + 1〜9</span><span class="shortcut-desc">自分の予定表を表示/非表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + ←/→</span><span class="shortcut-desc">前/翌日へ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + ↑/↓</span><span class="shortcut-desc">前/翌週へ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + 2/3/4</span><span class="shortcut-desc">月/週/日表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + ></span><span class="shortcut-desc">次の予定表</span></div>
     </div>
   </div>
 
-  <!-- 検索 -->
   <div class="category-card">
     <div class="category-header">🔍 検索・整理 <span class="badge badge-outlook">Outlook</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + E</span><span class="shortcut-desc">検索ボックスにフォーカス</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + E</span><span class="shortcut-desc">検索ボックス</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + F</span><span class="shortcut-desc">詳細検索</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">F3 / Ctrl + Shift + F3</span><span class="shortcut-desc">検索を閉じる</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">F4</span><span class="shortcut-desc">検索（移動）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 1〜9</span><span class="shortcut-desc">FavoritesのN番目を開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + H</span><span class="shortcut-desc">履歴検索</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">F3 / F4</span><span class="shortcut-desc">検索 / 移動検索</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + J</span><span class="shortcut-desc">迷惑メール報告</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + T</span><span class="shortcut-desc">削除メールを復元</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + 1〜9</span><span class="shortcut-desc">FavoritesのN番目</span></div>
     </div>
   </div>
 
-  <!-- 便利技 -->
+</div></div>
+
+<!-- ==================== POWERPOINT ==================== -->
+<div class="section" id="section-powerpoint"><div class="category-grid">
+
   <div class="category-card">
-    <div class="category-header">✨ Outlook 便利技 <span class="badge badge-outlook">Outlook</span></div>
+    <div class="category-header">📋 基本操作 <span class="badge badge-powerpoint">PowerPoint</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + D</span><span class="shortcut-desc">非表示（スレッド無視）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">F12</span><span class="shortcut-desc">名前を付けて保存</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + F + R</span><span class="shortcut-desc">アカウント設定</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Alt + F + T</span><span class="shortcut-desc">オプション（Outlookの設定）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + ,</span><span class="shortcut-desc">クイックアクセス設定</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-outlook">Ctrl + Shift + Tab</span><span class="shortcut-desc">フォルダーを閉じる</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + N</span><span class="shortcut-desc">新しいプレゼンテーション</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + O</span><span class="shortcut-desc">ファイルを開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + S</span><span class="shortcut-desc">上書き保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">F12</span><span class="shortcut-desc">名前を付けて保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + P</span><span class="shortcut-desc">印刷</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Z / Y</span><span class="shortcut-desc">元に戻す / やり直し</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + W</span><span class="shortcut-desc">閉じる</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">F1</span><span class="shortcut-desc">ヘルプ</span></div>
     </div>
   </div>
 
-</div>
-</div>
+  <div class="category-card">
+    <div class="category-header">📄 スライド操作 <span class="badge badge-powerpoint">PowerPoint</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + M</span><span class="shortcut-desc">新しいスライドを追加</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + D</span><span class="shortcut-desc">スライド/オブジェクト複製</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + C / X / V</span><span class="shortcut-desc">コピー / 切り取り / 貼り付け</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Delete</span><span class="shortcut-desc">スライド/オブジェクト削除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + ↑/↓</span><span class="shortcut-desc">スライドの順序移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + Shift + ↑/↓</span><span class="shortcut-desc">スライドの順序移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Enter</span><span class="shortcut-desc">新しいスライド追加（アウトライン）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Enter</span><span class="shortcut-desc">スライドのタイトル入力</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🎯 オブジェクト操作 <span class="badge badge-powerpoint">PowerPoint</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + G</span><span class="shortcut-desc">グループ化</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + G</span><span class="shortcut-desc">グループ解除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + J</span><span class="shortcut-desc">再グループ化</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + ←↑→↓</span><span class="shortcut-desc">1ピクセル移動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + ←↑→↓</span><span class="shortcut-desc">オブジェクトの微調整</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Shift + ←↑→↓</span><span class="shortcut-desc">オブジェクトサイズ変更</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + ←↑→↓</span><span class="shortcut-desc">拡大/縮小</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Alt + V</span><span class="shortcut-desc">形式を選択して貼り付け</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + D</span><span class="shortcut-desc">オブジェクトを複製</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + C / V</span><span class="shortcut-desc">書式のコピー/貼り付け</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🎨 文字・図形書式 <span class="badge badge-powerpoint">PowerPoint</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + B / I / U</span><span class="shortcut-desc">太字 / 斜体 / 下線</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + T</span><span class="shortcut-desc">フォントダイアログ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + F</span><span class="shortcut-desc">フォントの変更</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + > / <</span><span class="shortcut-desc">フォントサイズ拡大/縮小</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + H → F → C</span><span class="shortcut-desc">フォントの色</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + E / L / R</span><span class="shortcut-desc">中央/左/右揃え</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + H → S → H</span><span class="shortcut-desc">図形の挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + H → S → F</span><span class="shortcut-desc">図形の塗りつぶし選択</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">▶ スライドショー <span class="badge badge-powerpoint">PowerPoint</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">F5</span><span class="shortcut-desc">最初からスライドショー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Shift + F5</span><span class="shortcut-desc">現在のスライドから開始</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">→ / ↓ / Space / N</span><span class="shortcut-desc">次のスライド</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">← / ↑ / Backspace / P</span><span class="shortcut-desc">前のスライド</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">番号 + Enter</span><span class="shortcut-desc">指定スライドへジャンプ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">B / W</span><span class="shortcut-desc">黒/白画面（一時停止）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + H</span><span class="shortcut-desc">ポインターを非表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + A</span><span class="shortcut-desc">ポインターを表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + P</span><span class="shortcut-desc">ペンモード</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + E</span><span class="shortcut-desc">消しゴムモード</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + L</span><span class="shortcut-desc">レーザーポインター</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Esc / Ctrl + Break</span><span class="shortcut-desc">スライドショー終了</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + Tab</span><span class="shortcut-desc">他のアプリを表示</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">👁 表示モード <span class="badge badge-powerpoint">PowerPoint</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + Shift + Tab</span><span class="shortcut-desc">アウトラインビュー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + W → L</span><span class="shortcut-desc">スライド一覧表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + W → N</span><span class="shortcut-desc">ノート表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + +/-</span><span class="shortcut-desc">ズームイン/アウト</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + F9</span><span class="shortcut-desc">グリッド線表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + F10</span><span class="shortcut-desc">選択ウィンドウ</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">✨ 便利機能 <span class="badge badge-powerpoint">PowerPoint</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + K</span><span class="shortcut-desc">ハイパーリンク挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + N → P</span><span class="shortcut-desc">画像/図の挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + N → X</span><span class="shortcut-desc">テキストボックス挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + N → W</span><span class="shortcut-desc">ワードアート挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + N → T</span><span class="shortcut-desc">表の挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Alt + N → M</span><span class="shortcut-desc">SmartArt グラフィック</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">F7</span><span class="shortcut-desc">スペルチェック</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Ctrl + A</span><span class="shortcut-desc">すべて選択</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-powerpoint">Tab / Shift + Tab</span><span class="shortcut-desc">次の/前のオブジェクト選択</span></div>
+    </div>
+  </div>
+
+</div></div>
 
 <!-- ==================== TEAMS ==================== -->
-<div class="section" id="section-teams">
-<div class="category-grid">
+<div class="section" id="section-teams"><div class="category-grid">
 
-  <!-- 基本操作 -->
   <div class="category-card">
     <div class="category-header">💬 基本操作 <span class="badge badge-teams">Teams</span></div>
     <div class="shortcut-list">
@@ -551,13 +682,12 @@
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + N</span><span class="shortcut-desc">新しいチャットを開始</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + ,</span><span class="shortcut-desc">設定を開く</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + .</span><span class="shortcut-desc">コマンドパレットを開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + /</span><span class="shortcut-desc">コマンドの一覧を表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + /</span><span class="shortcut-desc">コマンド一覧を表示</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + /</span><span class="shortcut-desc">キーボードショートカット一覧</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + W</span><span class="shortcut-desc">現在のタブを閉じる</span></div>
     </div>
   </div>
 
-  <!-- ナビゲーション -->
   <div class="category-card">
     <div class="category-header">🧭 ナビゲーション <span class="badge badge-teams">Teams</span></div>
     <div class="shortcut-list">
@@ -567,252 +697,314 @@
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + 4</span><span class="shortcut-desc">会議（カレンダー）</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + 5</span><span class="shortcut-desc">通話</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + 6</span><span class="shortcut-desc">ファイル</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + Tab</span><span class="shortcut-desc">前のセクションに戻る</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Tab</span><span class="shortcut-desc">次のセクションへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + ↑</span><span class="shortcut-desc">上のチャンネル/チームへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + ↓</span><span class="shortcut-desc">下のチャンネル/チームへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + →</span><span class="shortcut-desc">選択したチームを展開</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + ←</span><span class="shortcut-desc">選択したチームを折りたたむ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + ↑/↓</span><span class="shortcut-desc">上下のチャンネルへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + →/←</span><span class="shortcut-desc">展開/折りたたみ</span></div>
     </div>
   </div>
 
-  <!-- チャット・メッセージ -->
   <div class="category-card">
     <div class="category-header">💬 チャット・メッセージ <span class="badge badge-teams">Teams</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Enter</span><span class="shortcut-desc">メッセージを送信</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Enter</span><span class="shortcut-desc">送信</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Shift + Enter</span><span class="shortcut-desc">改行</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + X</span><span class="shortcut-desc">書式ツールバーを表示</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + C</span><span class="shortcut-desc">コードスニペット挿入</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + X</span><span class="shortcut-desc">書式ツールバー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + C</span><span class="shortcut-desc">コードスニペット</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + I</span><span class="shortcut-desc">イマーシブリーダー</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + R</span><span class="shortcut-desc">チャット履歴を更新</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + K</span><span class="shortcut-desc">会議チャットにフォーカス</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + U</span><span class="shortcut-desc">ファイルを添付</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + E</span><span class="shortcut-desc">新しいチャンネルを作成</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + M</span><span class="shortcut-desc">ミュート切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + O</span><span class="shortcut-desc">カメラ切替</span></div>
     </div>
   </div>
 
-  <!-- 会議・通話 -->
   <div class="category-card">
     <div class="category-header">🎥 会議・通話 <span class="badge badge-teams">Teams</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + A</span><span class="shortcut-desc">新しい会議をスケジュール</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + A</span><span class="shortcut-desc">新しい会議</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + C</span><span class="shortcut-desc">通話を開始</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + M</span><span class="shortcut-desc">ミュートの切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + O</span><span class="shortcut-desc">カメラの切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + P</span><span class="shortcut-desc">画面共有（画面の選択）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + R</span><span class="shortcut-desc">録画の開始/停止</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + Space</span><span class="shortcut-desc">プッシュ トーク（一時的にミュート解除）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + D</span><span class="shortcut-desc">画面共有をデスクトップに切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + W</span><span class="shortcut-desc">画面共有をウィンドウに切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + Y</span><span class="shortcut-desc">会議のチャットを表示/非表示</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + H</span><span class="shortcut-desc">会議の参加者一覧を表示/非表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + P</span><span class="shortcut-desc">画面共有</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + R</span><span class="shortcut-desc">録画開始/停止</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + Space</span><span class="shortcut-desc">プッシュトーク</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + D</span><span class="shortcut-desc">共有→デスクトップ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + W</span><span class="shortcut-desc">共有→ウィンドウ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + Y</span><span class="shortcut-desc">会議チャット表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + H</span><span class="shortcut-desc">参加者一覧表示</span></div>
     </div>
   </div>
 
-  <!-- ファイル -->
-  <div class="category-card">
-    <div class="category-header">📁 ファイル操作 <span class="badge badge-teams">Teams</span></div>
-    <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + O</span><span class="shortcut-desc">ファイルを開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + F</span><span class="shortcut-desc">ファイル検索</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + G</span><span class="shortcut-desc">ファイルを共有</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + S</span><span class="shortcut-desc">ファイルを保存</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + S</span><span class="shortcut-desc">名前を付けて保存</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">F2</span><span class="shortcut-desc">ファイル名の変更</span></div>
-    </div>
-  </div>
-
-  <!-- 便利機能 -->
   <div class="category-card">
     <div class="category-header">✨ 便利機能 <span class="badge badge-teams">Teams</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 1</span><span class="shortcut-desc">GIF を送信</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 2</span><span class="shortcut-desc">ステッカーを送信</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 3</span><span class="shortcut-desc">ミームを送信</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 7</span><span class="shortcut-desc">絵文字を送信</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 8</span><span class="shortcut-desc">リアクションを追加</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 2</span><span class="shortcut-desc">ステッカー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 3</span><span class="shortcut-desc">ミーム</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 7</span><span class="shortcut-desc">絵文字</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Ctrl + Shift + 8</span><span class="shortcut-desc">リアクション</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + Shift + C</span><span class="shortcut-desc">チャンネルへ移動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + Shift + F</span><span class="shortcut-desc">お気に入りに追加/削除</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + Shift + A</span><span class="shortcut-desc">チャンネルに返信</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + Shift + R</span><span class="shortcut-desc">スレッドを展開</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + Shift + F</span><span class="shortcut-desc">お気に入り追加/削除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-teams">Alt + Shift + R</span><span class="shortcut-desc">スレッド展開</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-teams">Esc</span><span class="shortcut-desc">検索/コマンドを閉じる</span></div>
     </div>
   </div>
 
-</div>
-</div>
+</div></div>
+
+<!-- ==================== BROWSER ==================== -->
+<div class="section" id="section-browser"><div class="category-grid">
+
+  <div class="category-card">
+    <div class="category-header">📑 タブ管理 <span class="badge badge-browser">Edge / Chrome</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + T</span><span class="shortcut-desc">新しいタブを開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + W</span><span class="shortcut-desc">タブを閉じる</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + T</span><span class="shortcut-desc">閉じたタブを復元</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Tab</span><span class="shortcut-desc">次のタブへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + Tab</span><span class="shortcut-desc">前のタブへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + 1〜9</span><span class="shortcut-desc">N番目のタブへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + 9</span><span class="shortcut-desc">最後のタブへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + A</span><span class="shortcut-desc">すべてのタブをお気に入りに追加</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + H</span><span class="shortcut-desc">履歴を開く</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🧭 ナビゲーション <span class="badge badge-browser">Edge / Chrome</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Alt + ←</span><span class="shortcut-desc">戻る</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Alt + →</span><span class="shortcut-desc">進む</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">F5 / Ctrl + R</span><span class="shortcut-desc">更新（リロード）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + F5</span><span class="shortcut-desc">ハードリロード（キャッシュ無視）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Esc</span><span class="shortcut-desc">読み込み中止</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">F11</span><span class="shortcut-desc">全画面表示 ON/OFF</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">F12</span><span class="shortcut-desc">開発者ツール</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + N</span><span class="shortcut-desc">新しいウィンドウ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + N</span><span class="shortcut-desc">新しいシークレットウィンドウ</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🌐 アドレスバー操作 <span class="badge badge-browser">Edge / Chrome</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + L / F6 / Alt + D</span><span class="shortcut-desc">アドレスバーにフォーカス</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Enter</span><span class="shortcut-desc">www.〜.com を補完</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + Enter</span><span class="shortcut-desc">www.〜.co.jp を補完</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Alt + Enter</span><span class="shortcut-desc">URLを新しいタブで開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + K / E</span><span class="shortcut-desc">検索バーにフォーカス</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + D</span><span class="shortcut-desc">お気に入りに追加</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + B</span><span class="shortcut-desc">お気に入りバー表示/非表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + O</span><span class="shortcut-desc">お気に入りマネージャー</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🔍 検索 <span class="badge badge-browser">Edge / Chrome</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + F</span><span class="shortcut-desc">ページ内検索</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + G</span><span class="shortcut-desc">次の検索結果へ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + G</span><span class="shortcut-desc">前の検索結果へ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Esc</span><span class="shortcut-desc">検索バーを閉じる</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + L</span><span class="shortcut-desc">選択テキストを検索</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🔎 ページ操作 <span class="badge badge-browser">Edge / Chrome</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Space / Shift + Space</span><span class="shortcut-desc">1画面下/上へスクロール</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Home / End</span><span class="shortcut-desc">ページ先頭/末尾へ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + + / -</span><span class="shortcut-desc">ズームイン/アウト</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + 0</span><span class="shortcut-desc">ズームをデフォルトに戻す</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + P</span><span class="shortcut-desc">印刷</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + S</span><span class="shortcut-desc">ページを保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + U</span><span class="shortcut-desc">ページソースを表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + I</span><span class="shortcut-desc">開発者ツール</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">🛠 開発者ツール <span class="badge badge-browser">Edge / Chrome</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">F12 / Ctrl + Shift + I</span><span class="shortcut-desc">開発者ツールを開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + J</span><span class="shortcut-desc">Consoleタブ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + C</span><span class="shortcut-desc">要素を検証モード</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + M</span><span class="shortcut-desc">デバイスモード切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">F5 / Ctrl + R</span><span class="shortcut-desc">ページ更新</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + F5</span><span class="shortcut-desc">キャッシュクリア更新</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + O</span><span class="shortcut-desc">ファイルを開く</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">⚡ Edge 独自 <span class="badge badge-browser">Edge 専用</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + A</span><span class="shortcut-desc">Copilot サイドバー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + S</span><span class="shortcut-desc">Web選択（スクショ）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + I</span><span class="shortcut-desc">読み上げモード</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + G</span><span class="shortcut-desc">コレクションを開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + R</span><span class="shortcut-desc">縦書き表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + U</span><span class="shortcut-desc">PDF 読み上げ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Alt + F</span><span class="shortcut-desc">設定などメニュー</span></div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">⚡ Chrome 独自 <span class="badge badge-browser">Chrome 専用</span></div>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + J</span><span class="shortcut-desc">ダウンロード履歴</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + H</span><span class="shortcut-desc">履歴</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + Delete</span><span class="shortcut-desc">閲覧履歴データ削除</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + B</span><span class="shortcut-desc">ブックマークバー表示</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + O</span><span class="shortcut-desc">ブックマーク管理</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Alt + Home</span><span class="shortcut-desc">ホームページを開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-browser">Ctrl + Shift + M</span><span class="shortcut-desc">他のユーザーでログイン</span></div>
+    </div>
+  </div>
+
+</div></div>
 
 <!-- ==================== WINDOWS ==================== -->
-<div class="section" id="section-windows">
-<div class="category-grid">
+<div class="section" id="section-windows"><div class="category-grid">
 
-  <!-- 基本操作 -->
   <div class="category-card">
     <div class="category-header">🖥 基本操作 <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win</span><span class="shortcut-desc">スタートメニュー</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + D</span><span class="shortcut-desc">デスクトップ表示/復元</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + E</span><span class="shortcut-desc">エクスプローラーを開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + I</span><span class="shortcut-desc">設定を開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + E</span><span class="shortcut-desc">エクスプローラー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + I</span><span class="shortcut-desc">設定</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + R</span><span class="shortcut-desc">ファイル名を指定して実行</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + L</span><span class="shortcut-desc">PCをロック</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + X</span><span class="shortcut-desc">クイックリンクメニュー</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + A</span><span class="shortcut-desc">クイック設定（WiFi/音量等）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + S</span><span class="shortcut-desc">検索（Windows Search）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + A</span><span class="shortcut-desc">クイック設定</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + S</span><span class="shortcut-desc">検索</span></div>
     </div>
   </div>
 
-  <!-- ウィンドウ操作 -->
   <div class="category-card">
     <div class="category-header">🪟 ウィンドウ操作 <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + →</span><span class="shortcut-desc">右半分にスナップ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + ←</span><span class="shortcut-desc">左半分にスナップ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + ↑</span><span class="shortcut-desc">最大化</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + ↓</span><span class="shortcut-desc">最小化/元に戻す</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + → / ←</span><span class="shortcut-desc">左右スナップ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + ↑ / ↓</span><span class="shortcut-desc">最大化 / 最小化</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Home</span><span class="shortcut-desc">アクティブ以外を最小化</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + →/←</span><span class="shortcut-desc">別モニターに移動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + F4</span><span class="shortcut-desc">アプリケーションを閉じる</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + M</span><span class="shortcut-desc">すべて最小化</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + M</span><span class="shortcut-desc">最小化を元に戻す</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + ↑</span><span class="shortcut-desc">縦方向に最大化</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + ↓</span><span class="shortcut-desc">縦方向に復元</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + Tab</span><span class="shortcut-desc">アプリの切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + Shift + Tab</span><span class="shortcut-desc">逆方向にアプリ切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + ↑</span><span class="shortcut-desc">縦方向最大化</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + F4</span><span class="shortcut-desc">アプリを閉じる</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + Tab</span><span class="shortcut-desc">アプリ切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + M / Shift + M</span><span class="shortcut-desc">すべて最小化 / 復元</span></div>
     </div>
   </div>
 
-  <!-- 仮想デスクトップ -->
   <div class="category-card">
     <div class="category-header">🗂 仮想デスクトップ <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Tab</span><span class="shortcut-desc">タスクビューを開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + D</span><span class="shortcut-desc">新しいデスクトップを作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + F4</span><span class="shortcut-desc">現在のデスクトップを閉じる</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + →</span><span class="shortcut-desc">次のデスクトップへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + ←</span><span class="shortcut-desc">前のデスクトップへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Tab</span><span class="shortcut-desc">タスクビュー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + D</span><span class="shortcut-desc">新デスクトップ作成</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + F4</span><span class="shortcut-desc">デスクトップを閉じる</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + →/←</span><span class="shortcut-desc">デスクトップ切替</span></div>
     </div>
   </div>
 
-  <!-- スクリーンショット・録画 -->
   <div class="category-card">
-    <div class="category-header">📸 スクリーンショット・録画 <span class="badge badge-windows">Windows</span></div>
+    <div class="category-header">📸 スクリーンショット <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + S</span><span class="shortcut-desc">スクリーンショット（Snipping Tool）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + PrtScn</span><span class="shortcut-desc">画面全体を保存（SSフォルダ）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">PrtScn</span><span class="shortcut-desc">画面全体をクリップボードへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + PrtScn</span><span class="shortcut-desc">アクティブウィンドウをクリップボードへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + G</span><span class="shortcut-desc">ゲームバー（録画/スクショ）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Alt + R</span><span class="shortcut-desc">画面録画の開始/停止</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Alt + PrtScn</span><span class="shortcut-desc">ゲームバーでスクリーンショット</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Alt + G</span><span class="shortcut-desc">最後の30秒を録画保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + S</span><span class="shortcut-desc">Snipping Tool</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + PrtScn</span><span class="shortcut-desc">画面全体を保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">PrtScn</span><span class="shortcut-desc">画面をクリップボードへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + PrtScn</span><span class="shortcut-desc">アクティブウィンドウ保存</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + G</span><span class="shortcut-desc">ゲームバー</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Alt + R</span><span class="shortcut-desc">録画開始/停止</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Alt + G</span><span class="shortcut-desc">最後の30秒録画保存</span></div>
     </div>
   </div>
 
-  <!-- タスクバー -->
   <div class="category-card">
     <div class="category-header">📌 タスクバー <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + 1〜9</span><span class="shortcut-desc">タスクバーのN番目を起動/切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + 1〜9</span><span class="shortcut-desc">N番目を起動/切替</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + T</span><span class="shortcut-desc">タスクバーをフォーカス</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Shift + Win + 1〜9</span><span class="shortcut-desc">N番目の新規インスタンス起動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Ctrl + Win + 1〜9</span><span class="shortcut-desc">N番目の最後のアクティブウィンドウへ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + B</span><span class="shortcut-desc">システムトレイにフォーカス</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + S</span><span class="shortcut-desc">検索（Windows Search）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Shift + Win + 1〜9</span><span class="shortcut-desc">新規インスタンス起動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Ctrl + Win + 1〜9</span><span class="shortcut-desc">最後のアクティブウィンドウ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + B</span><span class="shortcut-desc">システムトレイ</span></div>
     </div>
   </div>
 
-  <!-- クリップボード・入力 -->
   <div class="category-card">
     <div class="category-header">📋 クリップボード・入力 <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + V</span><span class="shortcut-desc">クリップボード履歴</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + .（ドット）</span><span class="shortcut-desc">絵文字パネル</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + ;（セミコロン）</span><span class="shortcut-desc">絵文字パネル</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + . / ;</span><span class="shortcut-desc">絵文字パネル</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + H</span><span class="shortcut-desc">音声入力（ディクテーション）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Space</span><span class="shortcut-desc">入力言語の切り替え</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + S</span><span class="shortcut-desc">切り取り & スケッチ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Space</span><span class="shortcut-desc">入力言語切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + S</span><span class="shortcut-desc">切り取り＆スケッチ</span></div>
     </div>
   </div>
 
-  <!-- ユーティリティ -->
   <div class="category-card">
     <div class="category-header">⚙ ユーティリティ <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + P</span><span class="shortcut-desc">プロジェクション/マルチディスプレイ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + K</span><span class="shortcut-desc">ワイヤレスディスプレイ接続</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + +</span><span class="shortcut-desc">拡大鏡（ズームイン）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + P</span><span class="shortcut-desc">マルチディスプレイ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + K</span><span class="shortcut-desc">ワイヤレスディスプレイ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + +</span><span class="shortcut-desc">拡大鏡（ズーム）</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Esc</span><span class="shortcut-desc">拡大鏡を終了</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Ctrl + Shift + Esc</span><span class="shortcut-desc">タスクマネージャー</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Pause</span><span class="shortcut-desc">システム情報</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + F</span><span class="shortcut-desc">フィードバック Hub</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + PrtScn</span><span class="shortcut-desc">スクリーンショット保存</span></div>
     </div>
   </div>
 
-  <!-- ファイル操作 -->
   <div class="category-card">
     <div class="category-header">📁 エクスプローラー <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">F2</span><span class="shortcut-desc">名前の変更</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">F5</span><span class="shortcut-desc">更新（リフレッシュ）</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Ctrl + Shift + N</span><span class="shortcut-desc">新しいフォルダー作成</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + ↑</span><span class="shortcut-desc">親フォルダーへ移動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + ←</span><span class="shortcut-desc">戻る</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + →</span><span class="shortcut-desc">進む</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Ctrl + C / X / V</span><span class="shortcut-desc">コピー / 切り取り / 貼り付け</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Delete</span><span class="shortcut-desc">ごみ箱に移動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Shift + Delete</span><span class="shortcut-desc">完全に削除（ごみ箱をスキップ）</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">F5</span><span class="shortcut-desc">更新</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Ctrl + Shift + N</span><span class="shortcut-desc">新フォルダー作成</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + ↑</span><span class="shortcut-desc">親フォルダーへ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + ←/→</span><span class="shortcut-desc">戻る/進む</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Delete / Shift + Delete</span><span class="shortcut-desc">ごみ箱 / 完全削除</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">F3</span><span class="shortcut-desc">ファイル検索</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">F11</span><span class="shortcut-desc">全画面表示</span></div>
     </div>
   </div>
 
-  <!-- アクセシビリティ -->
   <div class="category-card">
     <div class="category-header">♿ アクセシビリティ <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + U</span><span class="shortcut-desc">アクセシビリティ設定</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + C</span><span class="shortcut-desc">カラーフィルター切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Enter</span><span class="shortcut-desc">ナレーター（スクリーンリーダー）切替</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + +</span><span class="shortcut-desc">拡大鏡 起動/ズームイン</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + M</span><span class="shortcut-desc">拡大鏡の設定を開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + Q</span><span class="shortcut-desc">クイックアシストを開く</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Enter</span><span class="shortcut-desc">ナレーター切替</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + C</span><span class="shortcut-desc">カラーフィルター</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + M</span><span class="shortcut-desc">拡大鏡設定</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + Q</span><span class="shortcut-desc">クイックアシスト</span></div>
     </div>
   </div>
 
-  <!-- スリープ・シャットダウン -->
   <div class="category-card">
     <div class="category-header">🔌 電源・ログイン <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + L</span><span class="shortcut-desc">ロック画面</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Ctrl + Alt + Del</span><span class="shortcut-desc">セキュリティオプション</span></div>
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Alt + F4（デスクトップ）</span><span class="shortcut-desc">シャットダウンダイアログ</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + X → U → U</span><span class="shortcut-desc">シャットダウン</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + X → U → R</span><span class="shortcut-desc">再起動</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + X → U → S</span><span class="shortcut-desc">スリープ</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win → X → U → U</span><span class="shortcut-desc">シャットダウン</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win → X → U → R</span><span class="shortcut-desc">再起動</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win → X → U → S</span><span class="shortcut-desc">スリープ</span></div>
     </div>
   </div>
 
-  <!-- フォーカス -->
   <div class="category-card">
     <div class="category-header">🔇 フォーカス・通知 <span class="badge badge-windows">Windows</span></div>
     <div class="shortcut-list">
       <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + N</span><span class="shortcut-desc">通知センター</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + H</span><span class="shortcut-desc">フォーカスセッションを開始/停止</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Alt + D</span><span class="shortcut-desc">タスクバーの時計を開く</span></div>
-      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + T</span><span class="shortcut-desc">タスクバーのアプリを巡回</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Shift + H</span><span class="shortcut-desc">フォーカスセッション</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Alt + D</span><span class="shortcut-desc">タスクバーの時計</span></div>
+      <div class="shortcut-row"><span class="shortcut-keys keys-windows">Win + Ctrl + T</span><span class="shortcut-desc">タスクバーアプリ巡回</span></div>
     </div>
   </div>
 
-</div>
-</div>
+</div></div>
 
 </div>
 
 <footer>
-  📝 印刷・保存：ブラウザの「印刷」→「PDFに保存」で手元に保存できます
+  📝 印刷・保存：ブラウザの「印刷」→「PDFに保存」で手元に保存できます<br>
+  🖥 タブ切替：クリック または Alt + 1〜7（各タブに対応）
 </footer>
 
 <script>
@@ -820,17 +1012,18 @@ function switchTab(tab) {
   document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
   document.getElementById('section-' + tab).classList.add('active');
   document.querySelectorAll('.app-tab').forEach(el => {
-    el.classList.remove('active', 'active-excel', 'active-outlook', 'active-teams', 'active-windows');
+    el.classList.remove('active', 'active-excel', 'active-word', 'active-outlook', 'active-powerpoint', 'active-teams', 'active-browser', 'active-windows');
     if (el.dataset.target === tab) {
       el.classList.add('active', 'active-' + tab);
     }
   });
 }
 document.addEventListener('keydown', e => {
-  if (e.altKey && e.key === '1') { e.preventDefault(); switchTab('excel'); }
-  if (e.altKey && e.key === '2') { e.preventDefault(); switchTab('outlook'); }
-  if (e.altKey && e.key === '3') { e.preventDefault(); switchTab('teams'); }
-  if (e.altKey && e.key === '4') { e.preventDefault(); switchTab('windows'); }
+  if (e.altKey) {
+    const map = { '1':'excel','2':'word','3':'outlook','4':'powerpoint','5':'teams','6':'browser','7':'windows' };
+    const t = map[e.key];
+    if (t) { e.preventDefault(); switchTab(t); }
+  }
 });
 </script>
 </body>
